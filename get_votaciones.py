@@ -82,7 +82,7 @@ parser.add_argument("--folder",
 
 parser.add_argument('--keep-links',
                     action='store_true',
-                    help='Conservar links de PDF en un archivo links.txt')
+                    help='Conservar links en un archivo links.txt')
 
 parser.add_argument("--url",
                     help="URL del período de \
