@@ -62,11 +62,14 @@ def download(links, output_folder):
     downloaded = 0
     for pdf_url in links:
         file_name = os.path.basename(pdf_url)
-        urllib.urlretrieve(pdf_url, "%s/%s" % (output_folder, file_name))
-
-        # Update status
-        downloaded += 1
-        log("\rDownloaded: %d/%d" % (downloaded, total))
+        try:
+            urllib.urlretrieve(pdf_url, "%s/%s" % (output_folder, file_name))
+            # Update status
+            downloaded += 1
+            log("\rDownloaded: %d/%d" % (downloaded, total))
+        except IOError:
+            # File not found
+            log("\rError downloading %s" % (pdf_url))
 
     log("\nFinalized...")
 
